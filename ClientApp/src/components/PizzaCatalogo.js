@@ -57,6 +57,16 @@ export class PizzaCatalogo extends Component{
         
     }
 
+    cargarPizzas = () => {
+        fetch('pizza').then((response )=>{
+            return response.json();   
+       }).then(
+            (dataApi) => {
+                this.setState({data : dataApi})
+            }     
+       )
+    }
+
     mitoogle = () => {
         this.setState({accion: 0, name: ''});
     }
@@ -150,7 +160,8 @@ export class PizzaCatalogo extends Component{
                 code => {
 
                     console.log("eliminado");
-                    alert("eliminado");
+                    alert("Pizza eliminada");
+                    this.cargarPizzas();
                 }
             )
     }
