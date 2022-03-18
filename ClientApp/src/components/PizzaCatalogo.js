@@ -133,6 +133,28 @@ export class PizzaCatalogo extends Component{
         
     }
 
+    handleDeleteButton = (id) => {
+        const options = {
+            method: "DELETE",
+            headers: {
+              "Content-Type": "application/json"
+            },
+            body: ""
+        };
+
+        fetch('pizza/' + id, options)
+            .then(
+                (response) => { return response.status }
+            )
+            .then(
+                code => {
+
+                    console.log("eliminado");
+                    alert("eliminado");
+                }
+            )
+    }
+
     create = (pizza) => {
         const options = {
             method: "POST",
@@ -232,7 +254,7 @@ export class PizzaCatalogo extends Component{
                                         <td><Button color="primary" onClick={() => this.editar(pizza) } >
                                                 Edit
                                             </Button> {' '}
-                                            <Button color="primary" >
+                                            <Button color="primary" onClick={() => this.handleDeleteButton(pizza.id)}>
                                                 X
                                             </Button>
                                         </td>

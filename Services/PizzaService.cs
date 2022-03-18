@@ -137,7 +137,7 @@ public class PizzaService
 
     public void DeleteById(int id)
     {
-         var pizzaDel = _context.Pizzas.Find(id);
+        var pizzaDel = _context.Pizzas.Find(id);
         if(pizzaDel is null){
             throw new NullReferenceException("Pizza does not exist");       
         }
